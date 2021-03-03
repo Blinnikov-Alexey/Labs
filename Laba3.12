@@ -1,0 +1,33 @@
+nod(A,A,A).
+nod(0,B,B).
+nod(A,0,A).
+nod(A,B,NOD):-A>B, C is A mod B, nod(C,B,N),NOD is N.
+nod(A,B,NOD):-A<B, C is B mod A, nod(A,C,N),NOD is N.
+
+prost(2):- true,!.
+prost(N) :- NNotChetnoe is N mod 2, NNotChetnoe = 1, H is N div 2 + 2, prost(N, H, 3), !.
+prost(_, H1, N1) :- N1 >= H1.
+prost(N, H1, N1) :- N1 < H1, S is N mod N1, not(S = 0), N2 is N1 + 2, prost(N, H1, N2).
+prost(N, H1, N1) :- N1 < H1, S is N mod N1, S = 0, fail, !.
+
+
+deliteli(N, X) :- deliteli(N, 1, 0, X).
+deliteli(N, C, A, X) :-
+	(
+		C < N,
+		M is N mod C,
+		M = 0,
+		A1 is A + 1,
+		С1 is C + 1,
+		deliteli(N, С1, A1, X), !
+	);
+  
+	(
+		C < N,
+		С1 is C + 1,
+		deliteli(N, С1, A, X), !
+	);
+
+	(
+		X = A, !
+	).
