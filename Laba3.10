@@ -1,0 +1,7 @@
+min(N,S):-min(N,N,S).
+min(0,N,N):-!.
+min(A,Min,S):- Am is A mod 10, Ad is A div 10, Min=<Am ,Min1 is Min ,
+min(Ad,Min1,S).
+min(A,Min,S):- Am is A mod 10, Ad is A div 10, Min>Am ,Min1 is Am ,
+min(Ad,Min1,S).
+
