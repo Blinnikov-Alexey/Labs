@@ -1,0 +1,3 @@
+fib(N,X):-fib(N,1,1,X).
+fib(1,F2,_,F2):-!.
+fib(N,F1,F2,X):-N1 is N-1,NF2 is F1 + F2, fib(N1,F2,NF2,X).
