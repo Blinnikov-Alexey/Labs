@@ -1,0 +1,4 @@
+sum(N,S):-sum(N,0,S).
+sum(0,S,S):-!.
+sum(A,Sum,S):- Am is A mod 10, Ad is A div 10, Sum1 is Sum + Am,
+sum(Ad,Sum1,S).
