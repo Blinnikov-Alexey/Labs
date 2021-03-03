@@ -1,0 +1,36 @@
+prost(2):- true,!.
+
+prost(N) :- NNotChetnoe is N mod 2, NNotChetnoe = 1, H is N div 2 + 2, 
+prost(N, H, 3), !.
+
+prost(_, H1, N1) :- N1 >= H1.
+
+prost(N, H1, N1) :- N1 < H1, S is N mod N1, not(S = 0), N2 is N1 + 2,
+prost(N, H1, N2).
+
+prost(N, H1, N1) :- N1 < H1,
+S is N mod N1,
+S = 0, fail, !.
+
+maxProstDel(N, Max) :- maxProstDel(N, 3, -1, Max).
+
+maxProstDel(N, It, Max, X) :-
+	(
+		not(It > N),
+		prost(It),
+		T is N mod It,
+		T = 0,
+		ItNext is It + 2,
+		maxProstDel(N, ItNext, It, X), !
+	);
+
+	(
+		not(It > N),
+
+		ItNext is It + 2,
+		maxProstDel(N, ItNext, Max, X), !
+	);
+
+	(
+		X = Max, !
+	).
