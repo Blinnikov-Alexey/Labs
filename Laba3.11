@@ -1,0 +1,5 @@
+umn(N,N) :- N < 10,not(N=5), !.
+umn(5,1):-!.
+umn(N,K) :- N1 is N mod 10, N2 is N div 10, umn(N2,K1),not(N1=5),not(K1=5), K is K1*N1.
+umn(N,K) :- N1 is N mod 10, N2 is N div 10, umn(N2,K1),(N1=5),not(K1=5), K is K1*1.
+umn(N,K) :- N1 is N mod 10, N2 is N div 10, umn(N2,K1),not(N1=5),(K1=5), K is 1*N1.
