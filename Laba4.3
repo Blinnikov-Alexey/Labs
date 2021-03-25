@@ -1,0 +1,2 @@
+sum_list_up([],0):-!.
+sum_list_up([H|T],S):-sum_list_up(T,S1),S is S1+H.
