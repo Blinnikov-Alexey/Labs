@@ -1,0 +1,5 @@
+list_el_numb([H|T],Elem,Number):-list_el_numb([H|T],Elem,Number,0).
+list_el_numb([H|T],Elem,Number,Chet):-Chet1 is Chet+1,
+    (H = Elem,  Number = Chet1 -> !;
+    list_el_numb(T,Elem,Number,Chet1)).
+
