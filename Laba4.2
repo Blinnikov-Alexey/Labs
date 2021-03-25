@@ -1,0 +1,3 @@
+sum_list_down(List,Sum):-sum_list_down(List,0,Sum).
+sum_list_down([],Sum,Sum):-!.
+sum_list_down([H|T],S,Sum):-S1 is H + S,sum_list_down(T,S1,Sum).
