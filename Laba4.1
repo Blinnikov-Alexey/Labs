@@ -1,0 +1,2 @@
+read(0,[]):-!.
+read(N,[H|T]):-read(H),N1 is N-1,read(N1,T).
