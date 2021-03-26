@@ -1,0 +1,12 @@
+
+read_l(0,[]):-!.
+read_l(N,[H|T]):-read(H),N1 is N-1,read_l(N1,T).
+
+write_l([]):-!.
+write_l([H|T]):-write(H),write(" "),write_l(T).
+
+
+reverse_list(N):-read_l(N,X),reverse_list(X,XRev),write_l(XRev).
+reverse_list(X,XRev):-reverse_list(X,[],XRev).
+reverse_list([],Y,Y):-!.
+reverse_list([H|T],Y,XRev):-reverse_list(T,[H|Y],XRev).
