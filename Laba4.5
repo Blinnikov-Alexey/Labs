@@ -1,0 +1,10 @@
+
+pr(N, Elem, Number):- read_l(N,X), list_entry_el(X, Elem,Number).
+
+read_l(0,[]):-!.
+read_l(N,[H|T]):-read(H),N1 is N-1,read_l(N1,T).
+
+list_entry_el([H|T],Elem,Number):- list_entry_el([H|T],Elem,Number,0).
+list_entry_el([],_,_,_):- write("ERROR"),!.
+list_entry_el([H|T],Elem,Number,Chet):- Chet1 is Chet+1,
+    ( H = Elem, Number = Chet1 -> !; list_entry_el(T,Elem,Number,Chet1) ).
