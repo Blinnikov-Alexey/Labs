@@ -1,0 +1,9 @@
+read_l(0,[]):-!.
+read_l(N,[H|T]):-read(H),N1 is N-1,read_l(N1,T).
+
+min_list_down([H|T],Min):-min_list_down([H|T],H,Min).
+min_list_down([],Min,Min):-!.
+min_list_down([H|T],M,Min):-(H<M -> M1 is H,min_list_down(T,M1,Min);
+		            min_list_down(T,M,Min)).
+
+min_list(N):-read_l(N,X),min_list_down(X,Min),write(Min),!.
