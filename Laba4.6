@@ -1,0 +1,4 @@
+min_list_down([H|T],Min):-min_list_down([H|T],H,Min).
+min_list_down([],Min,Min):-!.
+min_list_down([H|T],M,Min):-(H<M -> M1 is H,min_list_down(T,M1,Min);
+		            min_list_down(T,M,Min)).
