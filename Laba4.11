@@ -1,0 +1,3 @@
+lists([],List2,List2).
+lists([H|T],List2,[H|T1]):-lists(T,List2,T1).
+pr(SubList,List):-lists(_,Y,List),lists(SubList,_,Y),!.
