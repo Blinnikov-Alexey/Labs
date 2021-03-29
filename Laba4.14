@@ -1,0 +1,4 @@
+in_list([H|T],X):-(X=H -> !;in_list(T,X)).
+
+repeat([]).
+repeat([H|T]):-in_list(T,H) -> fail,!;repeat(T).
