@@ -1,0 +1,9 @@
+reverse_list(List,ListR):-reverse_list(List,[],ListR).
+reverse_list([],Y,Y):-!.
+reverse_list([H|T],Y,ListR):-reverse_list(T,[H|Y],ListR).
+
+
+remove_number([H|T],X,List):-remove_number([H|T],[],List,X).
+remove_number([],Y,List2,_):-reverse_list(Y,List2),!.
+remove_number([H|T],Y,List2,X):-(H=X -> remove_number(T,Y,List2,X);
+								 remove_number(T,[H|Y],List2,X)).
