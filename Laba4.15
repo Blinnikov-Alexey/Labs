@@ -1,0 +1,13 @@
+
+in_list([H|T],X):-(X=H -> !;in_list(T,X)).
+
+
+reverse_list(List,ListR):-reverse_list(List,[],ListR).
+reverse_list([],Buffer,Buffer):-!.
+reverse_list([H|T],Buffer,ListR):-reverse_list(T,[H|Buffer],ListR).
+
+
+single_list(List,SList):-reverse_list(List,ListR),single_list(ListR,[],SList).
+single_list([],SList,SList):-!.
+single_list([H|T],Y,SList):-(in_list(T,H) -> single_list(T,Y,SList);
+								  single_list(T,[H|Y],SList)).
