@@ -1,0 +1,18 @@
+read_l(0,[]):-!.
+read_l(N,[H|T]):-read(H),N1 is N-1,read_l(N1,T).
+
+write_l([]):-!.
+write_l([H|T]):-write(H),write(" "),write_l(T).
+
+lists([],List2,List2).
+lists([H1|T],List2,[H1|T1]):-lists(T,List2,T1).
+
+reverse_list(List,ListR):-reverse_list(List,[],ListR).
+reverse_list([],Y,Y):-!.
+reverse_list([H|T],Y,ListR):-reverse_list(T,[H|Y],ListR).
+
+remove_index([H|T],Num,NList):-remove_index([H|T],Num,[],NList,1).
+remove_index([_|T],Num,Y,NList,Num):-reverse_list(Y,YR),
+										   lists(YR,T,NList),!.
+remove_index([H|T],Num,Y,NList,X):-X1 is X+1,
+								remove_index(T,Num,[H|Y],NList,X1).
