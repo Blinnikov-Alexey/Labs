@@ -1,0 +1,2 @@
+length_list([],0):-!.
+length_list([_|T],X):-length_list(T,X1),X is X1+1.
