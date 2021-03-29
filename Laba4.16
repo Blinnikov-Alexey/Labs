@@ -1,0 +1,5 @@
+
+repeat_in_list([H|T],X,K):-repeat_in_list([H|T],X,0,K).
+repeat_in_list([],_,C,C):-!.
+repeat_in_list([H|T],X,K,C):-(H=X -> K1 is K+1,repeat_in_list(T,X,K1,C);
+									repeat_in_list(T,X,K,C)).
