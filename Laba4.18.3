@@ -1,0 +1,15 @@
+list_el_numb([H|T],Elem,Number):-list_el_numb([H|T],Elem,Number,0).
+ list_el_numb([H|T],Elem,Number,Chet):-Chet1 is Chet+1,
+     (H = Elem,  Number = Chet1 -> !;
+     list_el_numb(T,Elem,Number,Chet1)).
+
+
+
+max_list_down([H|T],Max):-max_list_down([H|T],H,Max).
+max_list_down([],Max,Max):-!.
+max_list_down([H|T],M,Max):-(H>M -> M1 is H,max_list_down(T,M1,Max);
+		            max_list_down(T,M,Max)).
+
+
+
+index_max([H|T],N):- max_list_down([H|T],Max), list_el_numb([H|T],Max,N).
