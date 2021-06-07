@@ -1,0 +1,327 @@
+//1
+fun main(args: Array<String>)
+{
+println("Hello,world")
+}
+
+//3
+fun main(args: Array<String>)
+{
+println("Введите свое имя")
+val name = readLine()
+println("Hello, $name")
+}
+
+//5
+fun main(args: Array<String>)
+{
+    println("Kaкой язык программирования твой любимый?")
+    val answer = readLine()
+
+        when (answer) {
+            "Kotlin" ,"kotlin" -> println("Подлиза")
+            "Prolog", "prolog" -> println("Подлиза")
+            "C++", "c++" -> println("Неплохо")
+            "C", "c" -> println("Хороший выбор")
+            "Java", "java" -> println("Прикольно")
+
+            else -> println("Жаль")
+        }
+}
+
+//6
+fun main(args: Array<String>)
+{
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+ var sum = 0
+ while (x != 0)
+ {
+     sum += x % 10
+     x /= 10
+ }
+ println(sum)
+}
+
+//7
+
+    fun main(args: Array<String>)
+    {
+
+        fun prNumber(x: Int) : Int
+        {
+            var n = x
+            var proizv = 1
+            while (n != 0)
+            {
+                proizv *= n % 10
+                n /= 10
+            }
+            return proizv
+        }
+
+        fun max(x:Int): Int
+        {
+            var n=x
+            var max = 0;
+            while (n!=0)
+            {
+                if (n % 10 > max)
+
+                    max = n % 10
+
+                n /=10
+            }
+            return max;
+        }
+
+        fun min(x:Int): Int
+        {
+            var n=x
+            var min = 10;
+            while (n!=0)
+            {
+                if (n % 10 < min)
+
+                    min = n % 10
+
+                n /=10
+            }
+            return min;
+        }
+
+println("Введите число")
+        var x: Int = readLine()!!.toInt()
+        print("Произведение цифр числа:")
+        println (prNumber(x))
+        print("Максимальная цифра числа:")
+        println(max(x))
+        print("Минимальная цифра числа:")
+        println(min(x))
+
+    }
+
+
+//8.1
+
+fun main(args: Array<String>) {
+
+    fun prost(x: Int): Boolean {
+        var n = x
+        var a=n-1
+        var prost:Boolean = true
+        for (i in 2..a)
+        {
+            if (n%i==0) prost= false
+
+        }
+        return prost
+    }
+
+    fun max(x: Int): Int {
+        var n = x
+        var max = 0;
+        while (n != 0) {
+            if (n % 10 > max)
+
+                max = n % 10
+
+            n /= 10
+        }
+        return max;
+    }
+
+fun maxprostdel(x:Int): Int {
+    var n=x
+    var result=0
+    for (i in 1..n)
+    {
+        if (n%i==0 && prost(i))
+            result=i
+    }
+    return result
+}
+
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    println(maxprostdel(x))
+
+
+
+}
+
+//8.2
+
+ fun main(args: Array<String>)
+    {
+
+        fun prNumber(x: Int) : Int
+        {
+            var n = x
+            var proizv = 1
+            while (n != 0)
+            {
+               if(n%5!=0) proizv *= n % 10
+                n /= 10
+            }
+            return proizv
+        }
+println("Введите число")
+        var x: Int = readLine()!!.toInt()
+println(prNumber(x))
+}
+
+
+
+//8.3
+fun main(args: Array<String>) {
+
+    fun prost(x: Int): Boolean {
+        var n = x
+        var a=n-1
+        var prost:Boolean = true
+        for (i in 2..a)
+        {
+            if (n%i==0) prost= false
+
+        }
+        return prost
+    }
+
+    fun max(x: Int): Int {
+        var n = x
+        var max = 0;
+        while (n != 0) {
+            if (n % 10 > max)
+
+                max = n % 10
+
+            n /= 10
+        }
+        return max;
+    }
+
+fun maxneprostnechettdel(x:Int): Int {
+    var n=x
+    var result=0
+    for (i in 1..n step 2)
+    {
+
+        if (n%i==0 && prost(i)==false  )
+            result=i
+    }
+    return result
+}
+
+    fun prNumber(x: Int): Int {
+        var n = x
+        var proizv = 1
+        while (n != 0) {
+            proizv *= n % 10
+            n /= 10
+        }
+        return proizv
+    }
+
+    fun nod(x: Int, y:Int): Int {
+        var n=x
+        var m=y
+        var result=1
+        if (n<m)
+        {
+            for (i in 1..n)
+            {
+                if(n%i==0 && m%i==0)
+                    result=i
+            }
+        }
+        else
+        {
+            for (i in 1..m)
+            {
+                if(n%i==0 && m%i==0)
+                    result=i
+            }
+        }
+
+       return result
+
+    }
+
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+
+    print("Максимальный непростой нечетный делитель числа:")
+    println(maxneprostnechettdel(x))
+    print("Произведение цифр числа:")
+    println(prNumber(x))
+    print("НОД максимального непростого нечетного делителя числа и произведения цифр числа:")
+    println(nod(maxneprostnechettdel(x),prNumber(x) ))
+
+
+
+}
+
+//9
+  fun main(args: Array<String>) {
+
+        fun prNumber(x: Int): Int {
+            var n = x
+            var proizv = 1
+            while (n != 0) {
+                proizv *= n % 10
+                n /= 10
+            }
+            return proizv
+        }
+
+        fun max(x: Int): Int {
+            var n = x
+            var max = 0;
+            while (n != 0) {
+                if (n % 10 > max)
+
+                    max = n % 10
+
+                n /= 10
+            }
+            return max;
+        }
+
+        fun min(x: Int): Int {
+            var n = x
+            var min = 10;
+            while (n != 0) {
+                if (n % 10 < min)
+
+                    min = n % 10
+
+                n /= 10
+            }
+            return min;
+        }
+
+        println("Введите число")
+        var x: Int = readLine()!!.toInt()
+
+
+println("Введите действие:")
+
+        var methods: String= readLine()!!.toString()
+        fun workWithNumbers(methods: String) {
+
+                when (methods) {
+                    "произведение цифр" -> println(prNumber(x))
+                    "максимальная цифра" -> println(max(x))
+                    "минимальная цифра" -> println(min(x))
+
+                    else -> println("Операция не найдена")
+                }
+
+        }
+        workWithNumbers(methods)
+
+
+    }
