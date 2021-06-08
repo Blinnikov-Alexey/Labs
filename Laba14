@@ -1,0 +1,167 @@
+//1
+
+fun main(args: Array<String>) {
+
+   fun sum(x: Int): Int
+   {
+
+      if (x<10)
+          return x
+       else return x%10 + sum(x/10)
+
+   }
+
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Сумма цифр числа:")
+println(sum(x))
+
+
+}
+
+//2
+
+fun main(args: Array<String>) {
+
+        tailrec fun sum(x: Int, y: Int): Int
+        {
+
+            if (x > 0) return sum(x / 10, y + (x % 10))
+            else return y
+        }
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Сумма цифр числа:")
+println(sum(x,0))
+
+
+}
+
+//3 произведение вверх
+
+
+fun main(args: Array<String>) {
+
+    fun prNumber(x:Int):Int
+    {
+        if(x==0) return 1
+        else return ((x%10)*prNumber(x/10))
+    }
+
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Произведение цифр числа:")
+println(prNumber(x))
+
+//3 произведение хвостовая
+
+fun main(args: Array<String>) {
+
+    tailrec fun prNumber(x:Int,y:Int):Int
+    {
+
+        if (x > 0) return prNumber(x / 10, y * (x % 10))
+        else  return y
+    }
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Произведение цифр числа:")
+println(prNumber(x,1))
+
+//3 максимальная цифра вверх
+
+fun main(args: Array<String>) {
+
+    fun max(x : Int, y : Int) :Int
+    {
+        if (x > y) return  x
+        else return y
+    }
+
+    fun maxNum(x : Int):Int
+    {
+        if (x == 0) return -1
+        else return max(maxNum(x / 10), x % 10)
+    }
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Максимальная цифра числа:")
+println(maxNum(x))
+
+
+}
+
+//3 максимальная цифра хвостовая
+
+fun main(args: Array<String>) {
+
+    tailrec fun maxNum(x:Int,y:Int):Int
+    {
+        if (x == 0)  return y
+        else
+        {
+            if (x % 10 > y) return maxNum(x / 10, x % 10)
+            else return maxNum(x / 10, y)
+        }
+    }
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Максимальная цифра числа:")
+println(maxNum(x/10,x%10))
+
+
+} 
+
+//3 минимальная цифра вверх
+
+fun main(args: Array<String>) {
+
+    fun min(x : Int, y : Int) :Int
+    {
+        if (x < y) return x
+        else return y
+    }
+
+    fun minNum(x : Int) :Int
+    {
+        if (x < 10) return x
+        else return min(minNum(x / 10), x % 10)
+    }
+
+
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Минимальная цифра числа:")
+println(minNum(x))
+
+
+}
+
+//3 минимальная цифра хвостовая
+
+
+fun main(args: Array<String>) {
+
+    tailrec fun minNum(x:Int,y:Int) :Int
+    {
+        if (x == 0) return y
+        else
+        {
+            if (x % 10 < y) return minNum(x / 10, x % 10)
+            else return minNum(x / 10, y)
+        }
+    }
+    println("Введите число")
+    var x: Int = readLine()!!.toInt()
+    print("Минимальная цифра числа:")
+println(minNum(x/10,x%10))
+
+
+}
+
+
