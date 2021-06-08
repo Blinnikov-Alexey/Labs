@@ -164,4 +164,67 @@ println(minNum(x/10,x%10))
 
 }
 
+//4
 
+fun main(args: Array<String>)
+{
+
+    tailrec fun digitsDown(x: Int, y: Int, f : (Int , Int) -> Int):Int
+    {
+
+        if (x == 0) return y
+        else
+            return digitsDown(x / 10, f(y, x % 10), f)
+
+    }
+        fun sumDigits(x: Int): Int
+        {
+           return digitsDown(x, 0)  { a, b -> (a + b) }
+        }
+
+        fun mulDigits(x: Int): Int
+        {
+           return digitsDown(x, 1)   { a, b -> (a * b) }
+        }
+}
+
+//5
+
+ fun main(args: Array<String>)
+{
+
+    tailrec fun digitIfDown(x:Int, y : Int, f : (Int, Int) -> Int, pr : (Int) -> Boolean) : Int
+    {
+        if (x == 0) return y
+        else return digitIfDown(x / 10, if (pr(x % 10)) f(x % 10, y) else y, f, pr)
+    }
+
+    fun minDigitIfDown(x : Int) : Int
+    {
+       return digitIfDown(x, 9, {a, b -> if (a < b) a else b}, {x1 -> x1 % 2 == 0})
+    }
+
+    fun maxDigitIfDown(x : Int) : Int
+    {
+       return digitIfDown(x, 0, { a, b -> if (a > b) a else b }, { x1 -> x1 % 2 == 0 })
+    } 
+}
+
+//6
+
+ fun test1(x : Int) : Int
+    {
+       return digitIfDown(x, 1, {a,b -> a * b}, {x1 -> x1 % 2 == 0 && x1 > 6})
+    } // считает произведение четных цифр >6
+
+    fun test2(x : Int) : Int
+    {
+       return digitIfDown(x, 0, {a,b -> a + b}, {x1 -> x1 in 4..6 })
+    } // считает сумму цифр больших 4 и меньших 7
+    
+    fun test3(x : Int) : Int
+    {
+       return digitIfDown(x, 0, { a, b -> a + b }, { x1 -> x1 == 1 }) 
+    }
+// считает сумму единиц в числе
+    
